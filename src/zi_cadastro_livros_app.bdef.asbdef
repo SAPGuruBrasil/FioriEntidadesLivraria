@@ -1,0 +1,32 @@
+managed implementation in class zcl4l_i_cadastro_livros_app unique;
+strict ( 1 );
+
+define behavior for ZI_CADASTRO_LIVROS_APP //alias <alias_name>
+persistent table Z4L_T_LIVROS
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly, numbering : managed ) LivroUuid;
+
+  field ( readonly ) CreatedAt, CreatedBy, LastChangedAt, LastChangedBy;
+  field ( mandatory : create ) Titulo;
+
+  mapping for Z4L_T_LIVROS
+  {
+    LivroUuid = livro_uuid;
+    Titulo = titulo;
+    UrlCapa = url_capa;
+    AutorUuid = autor_uuid;
+    EditoraUuid = editora_uuid;
+    QtdEstoque = qtd_estoque;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+  }
+}

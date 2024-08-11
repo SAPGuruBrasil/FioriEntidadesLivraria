@@ -1,0 +1,95 @@
+@Metadata.layer: #CORE
+
+//Help: https://learning.sap.com/learning-journeys/develop-sapui5-applications/using-basic-annotations-for-object-pages_c9af88ae-54a3-4fe2-a858-4f722afbee6d
+
+@UI: { headerInfo: { typeName: 'Cadastro Autores',
+                     typeNamePlural: 'Cadastro Autores',
+                     title: { type: #STANDARD, value: 'AutorUuid' },
+                     description: { value: 'Nome' } } }
+@Search.searchable: true
+
+
+annotate view ZC_CADASTRO_AUTORES_APP with
+{
+
+    @UI.facet: [ {  id: 'DadosAutor',
+                    position: 10,
+                    purpose: #STANDARD,
+                    type: #FIELDGROUP_REFERENCE,
+                    label: 'Dados do Autor',
+                    targetQualifier: '_DadosAutor' },
+
+                 {  id: 'Biografia',
+                    position: 20,
+                    purpose: #STANDARD,
+                    type: #FIELDGROUP_REFERENCE,
+                    label: 'Biografia',
+                    targetQualifier: '_Biografia' }, 
+
+                 {  id: 'Datas',
+                    position: 30,
+                    purpose: #STANDARD,
+                    type: #FIELDGROUP_REFERENCE,
+                    label: 'Datas',
+                    targetQualifier: '_Datas' }, 
+
+                 {  id: 'Regionalidade',
+                    position: 40,
+                    purpose: #STANDARD,
+                    type: #FIELDGROUP_REFERENCE,
+                    label: 'Regionalidade',
+                    targetQualifier: '_Regionalidade' }, 
+  
+  
+                 {  id: 'Modificacao',
+                    position: 50,
+                    purpose: #STANDARD,
+                    type: #FIELDGROUP_REFERENCE,
+                    label: 'Modificações',
+                    targetQualifier: '_Modificacao' } 
+                    
+                    ]
+
+  @UI.hidden: true
+  AutorUuid;
+  @UI.lineItem: [ { position: 10 } ]
+  @UI.fieldGroup: [{ qualifier: '_DadosAutor', position: 10 } ]
+  @UI.selectionField: [{ position: 10}]
+  @Search.defaultSearchElement: true
+  Nome;
+  @UI.lineItem: [ { position: 20 } ]
+  @UI.selectionField: [{ position: 20}]
+  @UI.fieldGroup: [{ qualifier: '_DadosAutor', position: 20 } ]
+  Sobrenome;
+  @UI.lineItem: [ { position: 30 } ]
+  @UI.fieldGroup: [{ qualifier: '_DadosAutor', position: 30 } ]
+  @UI.selectionField: [{ position: 30}]
+  Apelido;
+  @UI.hidden: true
+  EditoraUuid;
+  @UI.lineItem: [ { position: 50 } ]
+  @UI.fieldGroup: [{ qualifier: '_Datas', position: 10 } ]
+  DataDeNascimento;
+  @UI.lineItem: [ { position: 60 } ]
+  @UI.fieldGroup: [{ qualifier: '_Datas', position: 20 } ]
+  DataDeMorte;
+  @UI.fieldGroup: [{ qualifier: '_Biografia', position: 10 } ]
+  @UI.multiLineText: true
+  Biografia;
+  @UI.fieldGroup: [{ qualifier: '_Regionalidade', position: 10 } ]
+  @UI.lineItem: [ { position: 80 } ]
+  CidadeNatal;
+  @UI.fieldGroup: [{ qualifier: '_Regionalidade', position: 20 } ]
+  @UI.lineItem: [ { position: 90 } ]
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_VH_PAIS', element: 'Land1' }, useForValidation: true }]
+  PaisDeOrigem;
+  @UI.fieldGroup: [{ qualifier: '_Modificacao', position: 10 }]
+  CreatedAt;
+  @UI.fieldGroup: [{ qualifier: '_Modificacao', position: 20}]
+  CreatedBy;
+  @UI.fieldGroup: [{ qualifier: '_Modificacao', position: 30}]
+  LastChangedAt;
+  @UI.fieldGroup: [{ qualifier: '_Modificacao', position: 40}]
+  LastChangedBy;
+
+}

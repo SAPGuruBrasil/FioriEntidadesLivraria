@@ -1,0 +1,62 @@
+@Metadata.layer: #CORE
+
+@UI: { headerInfo: { typeName: 'Cadastro Editora',
+                     typeNamePlural: 'Cadastro Editoras',
+                     title: { type: #STANDARD, value: 'Nome' },
+                     description: { value: 'Cnpj' } } }
+@Search.searchable: true
+
+annotate view ZC_CADASTRO_EDITORAS_APP with
+{
+
+  @UI.facet: [ {  id: 'DadosPrincipais',
+                  position: 10,
+                  purpose: #STANDARD,
+                  type: #FIELDGROUP_REFERENCE,
+                  label: 'Dados Principais',
+                  targetQualifier: '_DadosPrincipais' },
+
+               {  id: 'Endereco',
+                  position: 20,
+                  purpose: #STANDARD,
+                  type: #FIELDGROUP_REFERENCE,
+                  label: 'Endereço',
+                  targetQualifier: '_Endereco' },
+
+               {  id: 'Modificacao',
+                  position: 30,
+                  purpose: #STANDARD,
+                  type: #FIELDGROUP_REFERENCE,
+                  label: 'Modificações',
+                  targetQualifier: '_Modificacao' }
+
+                  ]
+  @UI.lineItem: [ { position: 10 } ]
+  @UI.fieldGroup: [{ qualifier: '_DadosPrincipais', position: 10 } ]
+  @UI.selectionField: [{ position: 10}]
+  @Search.defaultSearchElement: true
+  Nome;
+  @UI.lineItem: [ { position: 20 } ]
+  @UI.fieldGroup: [{ qualifier: '_DadosPrincipais', position: 20 } ]
+  @UI.selectionField: [{ position: 20}]
+  Cnpj;
+  @UI.fieldGroup: [{ qualifier: '_Endereco', position: 10 } ]
+  EnderecoLinha1;
+  @UI.fieldGroup: [{ qualifier: '_Endereco', position: 20 } ]
+  EnderecoLinha2;
+  @UI.fieldGroup: [{ qualifier: '_Endereco', position: 30 } ]
+  Cidade;
+  @UI.fieldGroup: [{ qualifier: '_Endereco', position: 40 } ]
+  Estado;
+  @UI.fieldGroup: [{ qualifier: '_Endereco', position: 50 } ]
+  Cep;
+  @UI.fieldGroup: [{ qualifier: '_Modificacao', position: 10 } ]
+  CreatedBy;
+  @UI.fieldGroup: [{ qualifier: '_Modificacao', position: 20 } ]
+  CreatedAt;
+  @UI.fieldGroup: [{ qualifier: '_Modificacao', position: 30 } ]
+  LastChangedBy;
+  @UI.fieldGroup: [{ qualifier: '_Modificacao', position: 40 } ]
+  LastChangedAt;
+
+}

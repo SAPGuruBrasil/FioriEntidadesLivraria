@@ -7,9 +7,8 @@
     sizeCategory: #S,
     dataClass: #MIXED
 }
-define view entity ZI_CADASTRO_AUTORES_APP 
+define root view entity ZI_CADASTRO_AUTORES_APP
   as select from z4l_t_autores as _Autores
-  association [1..1] to z4l_t_editora as _Editora on _Autores.editora_uuid = _Editora.editora_uuid
 {
   key autor_uuid         as AutorUuid,
       nome               as Nome,
@@ -21,10 +20,12 @@ define view entity ZI_CADASTRO_AUTORES_APP
       biografia          as Biografia,
       cidade_natal       as CidadeNatal,
       pais_de_origem     as PaisDeOrigem,
+      @Semantics.user.createdBy: true
       created_by         as CreatedBy,
+      @Semantics.systemDateTime.createdAt: true
       created_at         as CreatedAt,
+      @Semantics.user.lastChangedBy: true
       last_changed_by    as LastChangedBy,
-      last_changed_at    as LastChangedAt,
-      
-      _Editora
+      @Semantics.systemDateTime.lastChangedAt: true
+      last_changed_at    as LastChangedAt
 }

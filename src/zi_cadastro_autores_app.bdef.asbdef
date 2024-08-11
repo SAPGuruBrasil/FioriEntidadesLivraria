@@ -1,0 +1,36 @@
+managed implementation in class zcl4l_i_cadastro_autores_app unique;
+strict ( 1 );
+
+define behavior for ZI_CADASTRO_AUTORES_APP //alias <alias_name>
+persistent table z4l_t_autores
+lock master
+authorization master ( instance )
+//etag master LastChangedAt
+{
+  create;
+  update;
+  delete;
+  field ( readonly, numbering : managed ) AutorUuid;
+  field ( readonly ) CreatedAt, CreatedBy, LastChangedAt, LastChangedBy;
+
+  field ( mandatory : create ) nome;
+
+  mapping for z4l_t_autores
+  {
+
+    AutorUuid = autor_uuid;
+    Nome = nome;
+    Sobrenome = sobrenome;
+    DataDeNascimento = data_de_nascimento;
+    apelido = apelido;
+    DataDeMorte = data_de_morte;
+    biografia = biografia;
+    CidadeNatal = cidade_natal;
+    PaisDeOrigem = pais_de_origem;
+    CreatedAt = created_at;
+    CreatedBy = created_by;
+    LastChangedAt = last_changed_at;
+    lastChangedBy = last_changed_by;
+  }
+
+}
