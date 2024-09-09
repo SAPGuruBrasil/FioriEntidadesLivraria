@@ -1,0 +1,28 @@
+unmanaged;
+
+define behavior for ZI_4L_FINAL_APP_EDITORAS //alias <alias_name>
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  association _Autores { create; }
+  association _Livros { create; }
+}
+
+define behavior for ZI_4L_FINAL_APP_AUTORES //alias <alias_name>
+lock dependent by _Editora
+authorization dependent by _Editora
+//etag master <field_name>
+{
+  field ( readonly ) EditoraUuid;
+  association _Editora;
+}
+
+define behavior for ZI_4L_FINAL_APP_LIVROS //alias <alias_name>
+lock dependent by _Editora
+authorization dependent by _Editora
+//etag master <field_name>
+{
+  field ( readonly ) EditoraUuid;
+  association _Editora;
+}

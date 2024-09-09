@@ -1,0 +1,9 @@
+projection;
+//strict ( 1 ); //Uncomment this line in order to enable strict mode 1. The strict mode is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for ZC_4L_FINAL_APP_EDITORAS //alias <alias_name>
+{
+    use association _Autores;
+    use association _Livros;
+
+}

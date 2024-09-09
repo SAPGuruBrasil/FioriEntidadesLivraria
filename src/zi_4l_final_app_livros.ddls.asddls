@@ -1,8 +1,9 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Database View'
 @Metadata.ignorePropagatedAnnotations: true
-define root view entity ZI_CADASTRO_LIVROS_APP
+define view entity ZI_4L_FINAL_APP_LIVROS
   as select from z4l_t_livros
+  association to parent ZI_4L_FINAL_APP_EDITORAS as _Editora on $projection.EditoraUuid = _Editora.EditoraUuid
   association [0..1] to z4l_t_autores as _AutorData on $projection.AutorUuid = _AutorData.autor_uuid
   association [0..1] to z4l_t_editora as _EditoraData on $projection.EditoraUuid = _EditoraData.editora_uuid
 {
@@ -20,6 +21,8 @@ define root view entity ZI_CADASTRO_LIVROS_APP
       last_changed_by as LastChangedBy,
       @Semantics.systemDateTime.lastChangedAt: true
       last_changed_at as LastChangedAt,
+      
+      _Editora,
       
       _AutorData,
       _EditoraData

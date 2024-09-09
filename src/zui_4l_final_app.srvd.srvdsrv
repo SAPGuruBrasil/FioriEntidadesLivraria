@@ -1,0 +1,8 @@
+@EndUserText.label: 'Service Definition'
+define service ZUI_4L_FINAL_APP {
+  expose ZC_4L_FINAL_APP_EDITORAS as App;
+
+
+  expose ZC_4L_FINAL_APP_AUTORES as Autores;
+  expose ZC_4L_FINAL_APP_LIVROS as Livros;
+}

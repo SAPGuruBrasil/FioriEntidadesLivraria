@@ -6,8 +6,10 @@
     sizeCategory: #S,
     dataClass: #MIXED
 }
-define root view entity ZI_CADASTRO_EDITORAS_APP
+define root view entity ZI_4L_FINAL_APP_EDITORAS
   as select from z4l_t_editora as _Editora
+  composition [0..*] of ZI_4L_FINAL_APP_LIVROS as _Livros
+  composition [0..*] of ZI_4L_FINAL_APP_AUTORES as _Autores
 {
   key editora_uuid    as EditoraUuid,
       nome            as Nome,
@@ -24,5 +26,8 @@ define root view entity ZI_CADASTRO_EDITORAS_APP
       @Semantics.user.lastChangedBy: true
       last_changed_by as LastChangedBy,
       @Semantics.systemDateTime.lastChangedAt: true
-      last_changed_at as LastChangedAt
+      last_changed_at as LastChangedAt,
+      
+      _Livros,
+      _Autores
 }

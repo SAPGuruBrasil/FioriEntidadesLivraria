@@ -16,22 +16,29 @@ annotate entity ZC_CADASTRO_LIVROS_APP with
                   label: 'Dados do Livro',
                   targetQualifier: '_DadosDoLivro' },
 
-               {  id: 'DadosEditora',
+               {  id: 'DadosAutor',
                   position: 20,
+                  purpose: #STANDARD,
+                  type: #FIELDGROUP_REFERENCE,
+                  label: 'Dados do Autor',
+                  targetQualifier: '_DadosAutor' },
+
+               {  id: 'DadosEditora',
+                  position: 30,
                   purpose: #STANDARD,
                   type: #FIELDGROUP_REFERENCE,
                   label: 'Dados da Editora',
                   targetQualifier: '_DadosEditora' },
 
                {  id: 'DadosEstoque',
-                  position: 30,
+                  position: 40,
                   purpose: #STANDARD,
                   type: #FIELDGROUP_REFERENCE,
                   label: 'Dados Estoque',
                   targetQualifier: '_DadosEstoque' },
 
                {  id: 'Modificacao',
-                  position: 40,
+                  position: 50,
                   purpose: #STANDARD,
                   type: #FIELDGROUP_REFERENCE,
                   label: 'Modificações',
@@ -46,14 +53,41 @@ annotate entity ZC_CADASTRO_LIVROS_APP with
   Titulo;
   @UI.fieldGroup: [{ qualifier: '_DadosDoLivro', position: 20 } ]
   UrlCapa;
-  @UI.fieldGroup: [{ qualifier: '_DadosEditora', position: 10 } ]
+  @UI.fieldGroup: [{ qualifier: '_DadosAutor', position: 10 } ]
   @UI.selectionField: [{ position: 20}]
-  @UI.lineItem: [ { position: 20 } ]
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_VH_AUTORES', element: 'AutorUuid' }, 
+                                       useForValidation: true,
+                                       additionalBinding: [
+                                           { localElement: 'AutorNome', element: 'Nome', usage: #RESULT },
+                                           { localElement: 'AutorSobrenome', element: 'Sobrenome', usage: #RESULT },
+                                           { localElement: 'AutorPaisOrigem', element: 'PaisDeOrigem', usage: #RESULT }
+                                       ] 
+                                     }]
   AutorUuid;
-  @UI.fieldGroup: [{ qualifier: '_DadosEditora', position: 20 } ]
-  @UI.selectionField: [{ position: 30}]
   @UI.lineItem: [ { position: 30 } ]
+  @UI.fieldGroup: [{ qualifier: '_DadosAutor', position: 20 } ]
+  AutorNome;
+  @UI.fieldGroup: [{ qualifier: '_DadosAutor', position: 30 } ]
+  AutorSobrenome;
+  @UI.fieldGroup: [{ qualifier: '_DadosAutor', position: 40 } ]
+  AutorPaisOrigem;
+  @UI.fieldGroup: [{ qualifier: '_DadosEditora', position: 10 } ]
+  @UI.selectionField: [{ position: 30}]
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_VH_EDITORAS', element: 'EditoraUuid' }, 
+                                       useForValidation: true,
+                                       additionalBinding: [
+                                           { localElement: 'EditoraNome', element: 'Nome', usage: #RESULT },
+                                           { localElement: 'EditoraCidade', element: 'Cidade', usage: #RESULT },
+                                           { localElement: 'EditoraEstado', element: 'Estado', usage: #RESULT }
+                                       ] 
+                                     }]
   EditoraUuid;
+  @UI.fieldGroup: [{ qualifier: '_DadosEditora', position: 20 } ]
+  EditoraNome;
+  @UI.fieldGroup: [{ qualifier: '_DadosEditora', position: 30 } ]
+  EditoraCidade;
+  @UI.fieldGroup: [{ qualifier: '_DadosEditora', position: 40 } ]
+  EditoraEstado;
   @UI.fieldGroup: [{ qualifier: '_DadosEstoque', position: 10 } ]
   @UI.lineItem: [ { position: 40 } ]
   QtdEstoque;

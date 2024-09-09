@@ -1,0 +1,19 @@
+@Metadata.layer: #CORE
+annotate entity ZI_VH_AUTORES
+    with 
+{
+    @UI.lineItem: [{ position: 10 }]
+    Nome;
+    @UI.lineItem: [{ position: 20 }]
+    Sobrenome;
+    @UI.lineItem: [{ position: 30 }]
+    DataDeNascimento;
+    @UI.lineItem: [{ position: 40 }]
+    PaisDeOrigem;
+    @UI.hidden: true
+    DataDeMorte;
+    @UI.hidden: true
+    Apelido;
+    @UI.hidden: true
+    AutorUuid;
+}

@@ -1,0 +1,85 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.typeName: 'Editoras'
+@UI.headerInfo.title.label: 'Editoras'
+@UI.headerInfo.description.label: 'Cadastro de Editoras'
+
+annotate entity ZC_4L_FINAL_APP_EDITORAS
+    with 
+{
+
+    @UI.facet: [
+        {
+            id: 'Geral',
+            label: 'Geral',
+            type: #IDENTIFICATION_REFERENCE 
+        },
+        {
+            id: 'Autores',
+            label: 'Autores',
+            type: #LINEITEM_REFERENCE,
+            targetElement: '_Autores' 
+        },
+        {
+            id: 'Livros',
+            label: 'Livros',
+            type: #LINEITEM_REFERENCE,
+            targetElement: '_Livros' 
+        }
+        
+    ]
+    @UI: {
+        lineItem: [{ position: 10 }],
+        identification: [{ position: 10 }]
+    }
+    Nome;
+    @UI: {
+        lineItem: [{ position: 20 }],
+        identification: [{ position: 20 }]
+    }
+    Cnpj;
+    @UI: {
+        lineItem: [{ position: 30 }],
+        identification: [{ position: 30 }]
+    }
+    EnderecoLinha1;
+    @UI: {
+        lineItem: [{ position: 40 }],
+        identification: [{ position: 40 }]
+    }
+    EnderecoLinha2;
+    @UI: {
+        lineItem: [{ position: 50 }],
+        identification: [{ position: 50 }]
+    }
+    Cidade;
+    @UI: {
+        lineItem: [{ position: 60 }],
+        identification: [{ position: 60 }]
+    }
+    Estado;
+    @UI: {
+        lineItem: [{ position: 70 }],
+        identification: [{ position: 70 }]
+    }
+    Cep;
+    @UI: {
+        identification: [{ position: 80 }]
+    }
+    CreatedBy;
+    @UI: {
+        identification: [{ position: 90 }]
+    }
+    CreatedAt;
+    @UI: {
+        identification: [{ position: 100 }]
+    }
+    LastChangedBy;
+    @UI: {
+        identification: [{ position: 110 }]
+    }
+    LastChangedAt;
+    /* Associations */
+    //_Autores;
+    //_Livros;
+    
+}
